@@ -1,0 +1,13 @@
+<%= error_messages_for 'machine' %>
+
+<% form_for :machine do |f| %>
+  <p> Name:<%= f.text_field :name %></p>
+  <p> IP Address:<%= f.text_field :ip %></p>
+  <p> User:<%= f.text_field :user %></p>
+  <p> Project:<%= f.text_field :project %></p>
+  <p> OS:<%= f.text_field :os %></p>
+  <p> Password:<%= f.text_field :password %></p>
+  <p> Comments:<%= f.text_area :comment %></p>
+  <p> <%= submit_tag "Add machine" %></p>
+<% end %>
+<%= link_to "Back to list of machines", :action => "index" %>

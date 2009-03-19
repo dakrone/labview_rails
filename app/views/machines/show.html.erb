@@ -1,0 +1,21 @@
+<h1><%=h @m.name %></h1>
+
+<b>Name: </b>
+<%=h @m.name %><br />
+<b>IP: </b>
+<%=h @m.ip %><br />
+<b>User: </b>
+<%=h @m.user %><br />
+<b>Project: </b>
+<%=h @m.project %><br />
+<b>OS: </b>
+<%=h @m.os %><br />
+<b>Password: </b>
+<%=h @m.password %><br />
+<b>Comment: </b>
+<%=h @m.comment %><br /><br />
+<%= link_to "edit", :controller => "machines", :action => "edit", :id => @m.id %><br />
+<%= link_to "delete", :controller => "machines", :action => "delete", :id => @m.id %><br />
+
+<br />
+<%= link_to "Back to all machines", :controller => "machines", :action => "index" %>

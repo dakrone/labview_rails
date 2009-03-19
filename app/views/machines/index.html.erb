@@ -1,0 +1,77 @@
+<title>Labview Machines</title>
+<div id="header">
+<h1>Labview</h1>
+<div id="nav">
+<% form_tag "machines", :method => "get" do %>
+    <% if flash[:notice] %>
+      <span class="flash"><%= flash[:notice] %></span>
+    <% end %>
+    <% if flash[:warning] %>
+      <span class="flash"><%= flash[:warning] %></span>
+    <% end %>
+    <% if session[:logged_in] %>
+      <%= link_to "new machine", :controller => "machines", :action => "new" %>
+    <% end %>
+    <% if session[:logged_in] %>
+      <%= link_to "logout", :controller => "login", :action => "logout" %>
+    <% else %>
+      <%= link_to "login", :controller => "login", :action => "index" %>
+    <% end %>
+    <%= text_field_tag :search, params[:search], :id => "box" %>
+    <%= submit_tag "Search", :name => nil, :id => "button" %>
+    <%= link_to "clear", :controller => "machines", :action => "index" %>
+<% end %>
+</div>
+</div>
+<table id="labview">
+  <thead>
+  <tr>
+    <th scope="col">Name</td>
+    <th scope="col">IP</td>
+    <th scope="col">User</td>
+    <th scope="col">Project</td>
+    <th scope="col">OS</td>
+    <% if session[:logged_in] %>
+      <th scope="col">Password</td>
+    <% end %>
+    <th scope="col">Comment</td>
+    <% if session[:logged_in] %>
+      <th scope="col">Admin</td>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+<% @machines.each do |m| %>
+  <tr>
+    <td>
+    <% if m.up_status %>
+      <img src="../images/up.gif"></src>
+    <% else %>
+      <img src="../images/down.gif"></src>
+    <% end %>
+    <%= link_to m.name, :controller => "machines", :action => "show", :id => m.id %>
+    </td><td>
+    <%=h m.ip %>
+    </td><td>
+    <%=h m.user %>
+    </td><td>
+    <%=h m.project %>
+    </td><td>
+    <%=h m.os %>
+    <% if session[:logged_in] %>
+      </td><td>
+      <%=h m.password %>
+    <% end %>
+    </td><td>
+    <%=h m.comment %>
+    <% if session[:logged_in] %>
+      </td><td>
+      <%= link_to "<img src='../images/edit.gif'></src>", :controller => "machines", :action => "edit", :id => m.id %> /
+      <%= link_to "<img src='../images/delete.gif'></src>", :controller => "machines", :action => "delete", :id => m.id %>
+    <% end %>
+    </td>
+  </tr>
+  
+<% end %>
+  </thead>
+</table>

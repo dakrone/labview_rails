@@ -1,0 +1,13 @@
+Labview is designed to be a lab-machine tracking system for sysadmins.
+
+I use it internally to track all of our lab machines.
+
+NOTES:
+Be sure to create databases, as well as add users. Currently there is no
+way to add users other than opening a rails console and doing
+User.new(<blah>).save!
+
+Still a work in progress, email me or leave a comment in you have a
+question about it.
+
+lee [at] writequit [dot] org
